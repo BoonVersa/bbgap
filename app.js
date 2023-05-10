@@ -66,7 +66,7 @@ bonk.addEventListener('click', () => {
 
 //gsap.to('.idisk', {x: -500,});
 
-gsap.registerPlugin(MorphSVGPlugin);
+
 
 gsap.to('.beam', {y:0 , duration: 0, opacity: 0,});
 
