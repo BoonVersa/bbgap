@@ -39,8 +39,8 @@
 
 //gsap.fromTo('.logo', {y: 100}, {y:0,  ease: "expo.out", duration: 1})
 
-
-
+const gapcontainer = document.querySelector('.gapcontainer');
+gsap.set(gapcontainer, { x: -200, y: -250 });
 
 //tl.fromTo('.cook', {scale: 0}, {scale: 1})
 //tl.fromTo('.logo', {y: 0, rotation: '-1080deg'}, {duration: 1, y: 0, rotation: '0deg'}, '<')
@@ -79,6 +79,7 @@ function activateTimeline() {
 object1.removeEventListener('mouseenter', activateTimeline);
 tl.to('.activate', {opacity: 1,duration: 1,})
 tl.to('.ringon', {fill: '#93ddff',},'<')
+tl.to('.gapcontainer', {y: 0,});
 tl.to("#innerDiskstart", {morphSVG: "#innerDiskend", duration: .9, scaleY: 1, delay: .5,});
 tl.to("#cringstart", {morphSVG: "#cringend", duration: .9, },'<');
 //tl.to("#lightRingstart", {morphSVG: "#lightRingend", duration: .9, },'<');
@@ -95,9 +96,10 @@ tl.fromTo('#cinco', {y: 300,}, {y: -500, repeat: -1, opacity: 0, duration: 3.5},
 tl.fromTo('#sies', {y: 300,}, {y: -500, repeat: -1, opacity: 0, duration: 2.2},'<');
 tl.fromTo('#siete', {y: 700,}, {y: -700, repeat: -1, opacity: 0, duration: 5},'<');
 tl.fromTo('#ocho', {y: 500,}, {y: 0, repeat: -1, opacity: 0, duration: 1.4},'<');
-tl.fromTo('.gap', {scaleX: 0, opacity: 0, y: 500,}, {scaleX: 1, opacity: 1, duration: 1.4, y: 100,});
+tl.fromTo('.gap', {scaleX: 0, opacity: 0, y: 300,}, {scaleX: 1, opacity: 1, duration: 1, y: 100,});
 tl.fromTo('.gap', {opacity: 1,}, {opacity: .5, duration: 4, repeat: -1, yoyo: true,});
 tl.to('#gaplinestart', {scaleX: .9, scaleY: .9, x: 45, y: 35, repeat: -1, yoyo: true, duration: 2,},'<');
+tl.to('.gapcontainer', {x: 0,});
 //tl.fromTo('#gaplinestart', {y: 35, x: 45}, {x: 0, y: 0, repeat: -1, yoyo: true});
 tl.fromTo('.hello',{y: -100, opacity: 0 }, {y: -1, scaleX: 1, opacity: 1},'<');
 tl.fromTo('.butler', {y: -50, opacity: 0,}, {y: -1, scaleX: 1, opacity: 1, delay: .7});
