@@ -57,7 +57,7 @@ body {
     height: 100%;
     border-radius: 0rem;
     font-family: "gruppo", sans-serif;
-    padding: 1rem;
+    padding: rem;
     align-items: center;
     justify-content: center;
     border: 1px solid rgb(255, 0, 0);
@@ -130,3 +130,12 @@ p {
   width: 4rem;
   height: 2rem;
 }
+.blanj, .projects, .skills, .resume {
+  border: 2px solid rgb(255, 0, 234);
+  width: 20rem;
+  height: 100vh;
+  opacity: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+

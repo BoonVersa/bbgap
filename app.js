@@ -1,7 +1,15 @@
-//performing
-//function smoke(name, lastName) {
-//    console.log('hello ' + name + ' ' + lastName)
-//}
+/*!
+ * MorphSVGPlugin 3.11.5
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2023, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/* eslint-disable */
+
 
 //smoke ('John', 'Papa');
 
@@ -50,7 +58,6 @@ gsap.set(gapcontainer, { x: -200, y: -250 });
 //tl.to('#lightRing', {scaleY: 0.5, y: 400})
 //tl.to('#innerDisk', {scaleY: 0.2, y: 200},'<')
 //tl.to('#mainDisk', {scaleY: 0.5, y: 340},'<')
-
 
 const ent = document.querySelector('.idisk')
 
@@ -115,3 +122,13 @@ tl.fromTo('.but4', {x: 190, opacity: 0,}, {x: 0, ease: Back.easeOut.config(2), o
   }
   
   object1.addEventListener('mouseenter', activateTimeline)
+
+
+  // Ben Blanj 
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+let smoother = ScrollSmoother.create({
+  wrapper: '#smooth-wrapper',
+  content: '#smooth-content',
+})
