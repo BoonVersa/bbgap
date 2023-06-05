@@ -1,15 +1,7 @@
-/*!
- * MorphSVGPlugin 3.11.5
- * https://greensock.com
- *
- * @license Copyright 2008-2023, GreenSock. All rights reserved.
- * Subject to the terms at https://greensock.com/standard-license or for
- * Club GreenSock members, the agreement issued with that membership.
- * @author: Jack Doyle, jack@greensock.com
-*/
-
-/* eslint-disable */
-
+//performing
+//function smoke(name, lastName) {
+//    console.log('hello ' + Name + ' ' + lastName)
+//}
 
 //smoke ('John', 'Papa');
 
@@ -47,7 +39,40 @@
 
 //gsap.fromTo('.logo', {y: 100}, {y:0,  ease: "expo.out", duration: 1})
 
-const gapcontainer = document.querySelector('.gapcontainer');
+
+
+gsap.set('body', { overflow: 'hidden' });
+
+let gapcontainer = document.querySelector('.gapcontainer');
+
+let isScrollLocked = true;
+
+function toggleScrollLock() {
+  isScrollLocked = false;
+  const body = document.querySelector('body');
+  body.style.overflow = isScrollLocked ? 'hidden' : 'auto';
+}
+
+const toggleButton = document.querySelector('#lock');
+toggleButton.addEventListener('click', toggleScrollLock);
+
+function unlockScrollOnSmallScreens() {
+  const screenWidth = window.innerWidth;
+  const body = document.querySelector('body');
+  if (screenWidth <= 768) {
+    body.style.overflow = 'auto'; // Unlock scrolling on smaller screens
+    isScrollLocked = false;
+    gsap.set(gapcontainer, { x: 0, y: 0 });
+  }
+}
+
+unlockScrollOnSmallScreens(); // Call the function initially to set the correct scroll state
+
+// Add a listener for screen size changes
+window.addEventListener('resize', unlockScrollOnSmallScreens);
+
+
+
 gsap.set(gapcontainer, { x: -200, y: -250 });
 
 //tl.fromTo('.cook', {scale: 0}, {scale: 1})
@@ -65,11 +90,6 @@ ent.addEventListener('mouseOver', () => {
     gsap.to('.cook', {opacity: 0, duration: 1, ease: 'rough', randomize: true})
 })
 
-const bonk = document.querySelector('button')
- 
-bonk.addEventListener('click', () => {
-    gsap.to('.cook', {opacity: 0, duration: 1, ease: 'rough', randomize: true})
-})
 
 //gsap.to('.idisk', {x: -500,});
 
@@ -84,6 +104,7 @@ const tl = gsap.timeline({defaults: {duration: 1,}})
 
 function activateTimeline() {    
 object1.removeEventListener('mouseenter', activateTimeline);
+object1.removeEventListener('click', activateTimeline);
 tl.to('.activate', {opacity: 1,duration: 1,})
 tl.to('.ringon', {fill: '#93ddff',},'<')
 tl.to('.gapcontainer', {y: 0,});
@@ -122,13 +143,35 @@ tl.fromTo('.but4', {x: 190, opacity: 0,}, {x: 0, ease: Back.easeOut.config(2), o
   }
   
   object1.addEventListener('mouseenter', activateTimeline)
+  object1.addEventListener('click', activateTimeline);
+
 
 
   // Ben Blanj 
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 let smoother = ScrollSmoother.create({
   wrapper: '#smooth-wrapper',
   content: '#smooth-content',
+  smooth: 2,
 })
+
+ScrollTrigger.create({
+  trigger: ".chupa",
+  pin: true,
+  start: "center center",
+  end: "+=300",
+  markers: true
+});
+
+document.querySelector("#lock").addEventListener("click", e => {
+  // scroll to the spot where .box-c is in the center.
+  // parameters: element, smooth, position
+  smoother.scrollTo(".chupa", true, "center center");
+  
+  // or you could animate the scrollTop:
+  // gsap.to(smoother, {
+  // 	scrollTop: smoother.offset(".box-c", "center center"),
+  // 	duration: 1
+  // });
+});
